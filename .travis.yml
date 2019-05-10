@@ -20,7 +20,7 @@ script:
   - cp -r ./lib/doc/api/html ~/.local/doxygen
 
 after_success:
-  - test "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" || exit 0
+  #- test "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" || exit 0
   - git clone https://${GH_TOKEN}@github.com/openturns/openturns.github.io.git
   - PROJECT_REPONAME=openturns
   - if test -n "${TRAVIS_TAG}"; then
