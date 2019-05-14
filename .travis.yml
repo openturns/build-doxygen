@@ -17,7 +17,7 @@ script:
     fi
   - cmake -DCMAKE_INSTALL_PREFIX=~/.local .
   - make html
-  - cp -r ./lib/doc/api/html ~/.local/doxygen
+  - cp -rv ./lib/doc/api/html ~/.local/doxygen
 
 after_success:
   #- test "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" || exit 0
