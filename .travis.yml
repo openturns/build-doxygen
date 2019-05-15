@@ -26,8 +26,8 @@ after_success:
   - if test -n "${TRAVIS_TAG}"; then
         TRAVIS_BRANCH=${TRAVIS_TAG:1};
     fi
-  - mkdir -p openturns.github.io/${PROJECT_REPONAME}/${TRAVIS_BRANCH}
-  - cp -r ~/.local/doxygen openturns.github.io/${PROJECT_REPONAME}/${TRAVIS_BRANCH}/doxygen
+  - mkdir -p openturns.github.io/${PROJECT_REPONAME}/${TRAVIS_BRANCH}/doxygen
+  - cp -rv ~/.local/doxygen/* openturns.github.io/${PROJECT_REPONAME}/${TRAVIS_BRANCH}/doxygen
   - cd openturns.github.io
   - touch .nojekyll
   - git config user.email "support@travis-ci.com"
