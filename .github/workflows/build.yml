@@ -1,0 +1,29 @@
+name: Build
+on: [push]
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install
+        run: sudo apt-get install -y doxygen graphviz liblapack-dev
+      - name: Build
+        run: |
+          git clone https://github.com/openturns/openturns.git
+          cd openturns
+          cmake .
+          make html
+          cp -rv ./lib/doc/api/html /tmp/doxygen
+      - name: Upload
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: |
+          git clone --depth 1 https://${{ secrets.GH_TOKEN }}@github.com/openturns/openturns.github.io.git /tmp/io
+          mkdir -p /tmp/io/openturns/master
+          cp -r /tmp/doxygen /tmp/io/openturns/master
+          cd /tmp/io
+          touch .nojekyll
+          git config user.email "support@gh.com"
+          git config user.name "GitHub Actions"
+          git add -A .
+          git commit -a -m "GitHub Actions build ${GITHUB_REPOSITORY} ${GITHUB_RUN_ID}"
+          git push --quiet origin master > /dev/null 2>&1

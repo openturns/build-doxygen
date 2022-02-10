@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/openturns/build-doxygen.svg?branch=master
-    :target: https://travis-ci.org/openturns/build-doxygen
+.. image:: https://github.com/openturns/build-doxygen/actions/workflows/build.yml/badge.svg?branch=master
+    :target: https://github.com/openturns/build-doxygen/actions/workflows/build.yml
 
 ===============================
 OpenTURNS Doxygen documentation
